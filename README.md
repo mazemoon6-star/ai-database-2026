@@ -37,14 +37,15 @@ AI에이전트 개발자 데이터베이스 리포지토리
 - 자신의 OS에 직접 설치하는 방법
 
 * postgresql-18.6-3-windows-x64.ex 실행
-  ![alt text](20260915_112053_image (2).png)
+
+![alt text](20260915_112053_image (1).png)
 
 ![alt text](image.png)
 
 - superuser id  - postgre 패스워드 지정
 - port 5432 기억할것 (port 는 내가 사용하면 다른 사람은 사용이 안됨)
 
-### Docker 설치
+### Docker Desktop 설치
 
 - 윈도우 버전으로 다운로드 후 설치
 - http://docs.docker.com/desktop/setup/install/windows-install/
@@ -74,13 +75,12 @@ GUI DB관리 실행 툴
 - https://dbeaver.io/download
   ![alt text](image-4.png)
 
-DB접속
-
-![alt text](20260915_121803_image.png)
+설치 후 DB접속
 
 1. DBeaver 실행
-2. 새 데이터베이스 연결
-3. 데이터베이스 설정
+2. 새 데이터베이스 연결 클릭
+   ![alt text](20260915_121803_image.png)
+3. 데이터베이스 설정 입력 (port확인 , show all databases 체크 후 test connection 클릭)
 
 ![alt text](image-6.png)
 
@@ -172,7 +172,7 @@ DB접속
 
 ##### 데이터 생성
 
-- insert (삽입) 쿼리 / select (확인) 쿼리 작성 > 난이도가 올라감 / update (수정) 쿼리 / delete (삭제) 쿼리 >> 직접 입력해서 만든 거
+- insert(삽입)쿼리 / select(확인)쿼리> 난이도가 올라감 / update(수정)쿼리/ delete(삭제)쿼리  >>직접 입력해서 만든 거
 - ```sql
   -- 데이터 삽입(INSERT)
   insert into public.students (name, age, email)
