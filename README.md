@@ -35,7 +35,9 @@ AI에이전트 개발자 데이터베이스 리포지토리
 ### 기본 설치
 
 - 자신의 OS에 직접 설치하는 방법
-- Docker Desktop Installer.exe 실행
+
+* postgresql-18.6-3-windows-x64.ex 실행
+![alt text](<20260915_112053_image (2).png>)
 
 ![alt text](image.png)
 
@@ -63,10 +65,14 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 GUI DB관리 실행 툴
 
-- https://dbeaver.io
+- https://dbeaver.io/download
   ![alt text](image-4.png)
 
+* [https://dbeaver.io/download/](https://dbeaver.io/download/
+
 DB접속
+
+![alt text](20260915_121803_image.png)
 
 1. DBeaver 실행
 2. 새 데이터베이스 연결
