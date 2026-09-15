@@ -32,12 +32,12 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 ![alt text](image-3.png)
 
-### 기본 설치
+#### 기본 설치
 
 - 자신의 OS에 직접 설치하는 방법
 
 * postgresql-18.6-3-windows-x64.ex 실행
-![alt text](<20260915_112053_image (2).png>)
+  ![alt text](20260915_112053_image (2).png)
 
 ![alt text](image.png)
 
@@ -46,15 +46,21 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 ### Docker 설치
 
-![alt text](image-1.png)
-
 - 윈도우 버전으로 다운로드 후 설치
+- http://docs.docker.com/desktop/setup/install/windows-install/
+
+  ![](assets/20260915_162234_image.png)
 - Close and Restart 이후
 - WSL(Windows Subsystem for Linux) 추가 설치
 
-#### Docker 란,
+  ![](assets/20260915_175128_20260915_135904_image.png)
 
-![](assets/20260915_162234_image.png)
+  ![](assets/20260915_175142_20260915_143106_image.png)
+
+  - 설치 완료 후 화면
+  - 사용자 user생성 비밀번호 입력
+
+#### Docker 란,
 
 - 환경의존성을 문제를 해결한 컨테이너 기술 솔루션
 - __*가상환경*__ 상 프로그램을 실행하도록 제공
@@ -67,8 +73,6 @@ GUI DB관리 실행 툴
 
 - https://dbeaver.io/download
   ![alt text](image-4.png)
-
-* [https://dbeaver.io/download/](https://dbeaver.io/download/
 
 DB접속
 
@@ -118,7 +122,6 @@ DB접속
 
 ![](assets/20260915_165430_image.png)
 
-
 #### DBeaver에서 접속
 
 ### DB 기본 사용법
@@ -149,7 +152,7 @@ DB접속
 - DB 접속 정보에서 Show All Databases를 체크하고 재접속
 - 데이터베이스 생성 확인
 
-#### 테이블 생성
+##### 테이블 생성
 
 - 데이터베이스 스키마를 사용할 데이터베이스로 **반드시** 선택
 
@@ -167,7 +170,7 @@ DB접속
   );
   ```
 
-#### 데이터 생성
+##### 데이터 생성
 
 - insert (삽입) 쿼리 / select (확인) 쿼리 작성 > 난이도가 올라감 / update (수정) 쿼리 / delete (삭제) 쿼리 >> 직접 입력해서 만든 거
 - ```sql
