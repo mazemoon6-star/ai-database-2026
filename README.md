@@ -4,6 +4,14 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 ## 1일차
 
+### DB의 특징
+
+- 데이터 무결성(고유값.변동없음)
+- 데이터 안정성(영구적 보관)
+- 데이터 동시성
+- 표준SQL 지원
+- 확장성
+
 ### PostgreSQL 개요 (C+S+v / 편집기)
 
 데이터베이스. 데이터를 한군데에서 관리하는 목적의 시스템
@@ -19,14 +27,6 @@ AI에이전트 개발자 데이터베이스 리포지토리
   - SQL Server
 
   위 대부분 상용 소프트웨어, Postgre는 **오픈소스 시스템** . 라이선스 비용 X
-
-### DB의 특징
-
-- 데이터 무결성(고유값.변동없음)
-- 데이터 안정성(영구적 보관)
-- 데이터 동시성
-- 표준SQL 지원
-- 확장성
 
 ### PostgreSQL 설치
 
@@ -45,10 +45,19 @@ AI에이전트 개발자 데이터베이스 리포지토리
 - superuser id  - postgre 패스워드 지정
 - port 5432 기억할것 (port 는 내가 사용하면 다른 사람은 사용이 안됨)
 
+### Docker 란,
+
+- 환경의존성을 문제를 해결한 컨테이너 기술 솔루션
+- __*가상환경*__ 상 프로그램을 실행하도록 제공
+- 컨테이너란, OS, 라이브러리, 설정 등 하나의 패키지로 만들어진 이미지
+- 기본 Docker(명령어) 실행파일 -> Docker Desktop(마우스로) 윈도우에서 Docker를 편하게 사용하도록
+
 ### Docker Desktop 설치
 
-- 윈도우 버전으로 다운로드 후 설치
-- http://docs.docker.com/desktop/setup/install/windows-install/
+- 윈도우 버전으로 다운로드 후 설치 
+(http://docs.docker.com/desktop/setup/install/windows-install/)
+![alt text](image-9.png)
+
 
   ![](assets/20260915_162234_image.png)
 - Close and Restart 이후
@@ -61,26 +70,19 @@ AI에이전트 개발자 데이터베이스 리포지토리
   - 설치 완료 후 화면
   - 사용자 user생성 비밀번호 입력
 
-#### Docker 란,
-
-- 환경의존성을 문제를 해결한 컨테이너 기술 솔루션
-- __*가상환경*__ 상 프로그램을 실행하도록 제공
-- 컨테이너란, OS, 라이브러리, 설정 등 하나의 패키지로 만들어진 이미지
-- 기본 Docker(명령어) 실행파일 -> Docker Desktop(마우스로) 윈도우에서 Docker를 편하게 사용하도록
-
-#### DBeaver 설치
+### DBeaver 설치
 
 GUI DB관리 실행 툴
 
 - https://dbeaver.io/download
   ![alt text](image-4.png)
 
-설치 후 DB접속
+- 설치 후 DB접속
 
 1. DBeaver 실행
 2. 새 데이터베이스 연결 클릭
    ![alt text](20260915_121803_image.png)
-3. 데이터베이스 설정 입력 (port확인 , show all databases 체크 후 test connection 클릭)
+3. 데이터베이스 설정 입력(port확인 > show all databases 체크 > test connection 클릭)
 
 ![alt text](image-6.png)
 
@@ -90,13 +92,14 @@ GUI DB관리 실행 툴
 ![alt text](image-7.png)
 ![alt text](image-8.png)
 
+
 ### PostgreSQL 이미지 다운로드
 
 - 이미지 : 도커 리포지토리에 미리 만들어놓은 시스템 패키지
 - 컨테이너 : 나의 도커에서 미리 다운로드 받은 이미지를 동작시킨 시스템
 
-  ##### 도커 명령어 기본
 
+  ##### 도커 명령어 기본
 
   ```bash
   docker --version
@@ -104,7 +107,6 @@ GUI DB관리 실행 툴
 - 설치된 도커 확인
 
   ##### 도커에서 PostgreSQL 이미지 다운로드
-
 
   ```bash
   docker pull postgres:latest
@@ -133,11 +135,11 @@ GUI DB관리 실행 툴
 - ai_db : 데이터베이스(프로젝트 전체 공간)
 - Schemas : 프로젝트 폴더
 - Tables : 실제 데이터를 담는 표
-- *DB 만든 후 f5 새로고침으로 확인하기*
+- DB 만든 후 F5 새로고침으로 확인하기
 
 ![](assets/20260915_170503_image.png)
 
-- docker 포터 25432 로 생성 후 DBeaver 에서 새로운 postgres DB생성
+(docker 포터 25432 로 생성 후 DBeaver 에서 새로운 postgres DB생성)
 
 #### DB생성
 
