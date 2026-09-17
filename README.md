@@ -6,7 +6,7 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 ### DB의 특징
 
-- 데이터 무결성(고유값.변동없음)
+- 데이터 무결성(고유값.중복없음)
 - 데이터 안정성(영구적 보관)
 - 데이터 동시성
 - 표준SQL 지원
@@ -36,9 +36,6 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 - 자신의 OS에 직접 설치하는 방법
 
-* postgresql-18.6-3-windows-x64.ex 실행
-
-![alt text](20260915_112053_image (1).png)
 
 ![alt text](image.png)
 
@@ -412,7 +409,7 @@ created_at timestamp defalut current_timestamp -- NULL이 들어갈 수 있음
 
 ##### 1. 기본키(PK)
 
-> 테이블에서 각 행(row) 구분하는 대표값. Primay Key (PK) - **Unique에 Not Null**
+>테이블에서 각 행(row)구분하는 대표값. Primay Key(PK)**Unique에 Not Null**
 
 - 중복 불가!
 - 비어 있을 수 없다!
@@ -431,7 +428,7 @@ MySQL에서 auto_increment, Oracle 에서 identity로 문법이 다름.
 
 ##### 2. 외래키(FK)
 
-> 다른 테이블의 기본키를 참조하는 컬럼. Foreign Key(KF)
+>다른 테이블의 기본키를 참조하는 컬럼. Foreign Key(KF)
 
 ```plantext
 Students(학생)
@@ -444,3 +441,12 @@ Enrollments(수강)
 - course_name : 수강명
 ```
 ![alt text](<스크린샷 2026-09-16 172343.png>)
+
+## 3일차
+
+### 제약조건
+
+#### PK / FK 관계
+- 생략
+
+#### 
