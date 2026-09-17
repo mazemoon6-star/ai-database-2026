@@ -30,16 +30,17 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 ### PostgreSQL 설치
 
-![alt text](image-3.png)
-
 #### 기본 설치
 
 - 자신의 OS에 직접 설치하는 방법
+- postgresql-18.6-3-windows-x64.exe
 
-
-![alt text](image.png)
+![alt text](<20260915_112053_image (4).png>)
 
 - superuser id  - postgre 패스워드 지정
+
+![alt text](20260915_112216_image.png)
+
 - port 5432 기억할것 (port 는 내가 사용하면 다른 사람은 사용이 안됨)
 
 ### Docker 란,
@@ -53,39 +54,44 @@ AI에이전트 개발자 데이터베이스 리포지토리
 
 - 윈도우 버전으로 다운로드 후 설치
   (http://docs.docker.com/desktop/setup/install/windows-install/)
-  ![alt text](image-9.png)
+  ![alt text](image-1.png)
 
   ![](assets/20260915_162234_image.png)
 - Close and Restart 이후
 - WSL(Windows Subsystem for Linux) 추가 설치
 
-  ![](assets/20260915_175128_20260915_135904_image.png)
-
-  ![](assets/20260915_175142_20260915_143106_image.png)
+  ![alt text](<20260915_135904_image (1).png>)
+  ![alt text](<20260915_143106_image (1).png>)
 
   - 설치 완료 후 화면
   - 사용자 user생성 비밀번호 입력
+
+  ![alt text](<20260915_160512_image (1).png>)
 
 ### DBeaver 설치
 
 GUI DB관리 실행 툴
 
 - https://dbeaver.io/download
-  ![alt text](image-4.png)
+ 
+![alt text](image.png)
+
 - 설치 후 DB접속
 
 1. DBeaver 실행
 2. 새 데이터베이스 연결 클릭
-   ![alt text](20260915_121803_image.png)
+
+![alt text](20260915_121803_image.png)
+
 3. 데이터베이스 설정 입력(port확인 > show all databases 체크 > test connection 클릭)
 
-![alt text](image-6.png)
+![alt text](20260915_121835_image.png)
 
 4. Test Connection 클릭 Driver 다운로드 후
 5. Connected 나오면 정상접속 확인 후 완료 >> 마우스로 만든 거
 
-![alt text](image-7.png)
-![alt text](image-8.png)
+![alt text](20260915_121856_image-2.png)
+
 
 ### PostgreSQL 이미지 다운로드
 
@@ -117,7 +123,6 @@ GUI DB관리 실행 툴
   docker run --name my-postgres -e POSTGRES_PASSWORD=123456 -p 25432:5432 -d postgres:latest
   ```
 
-![](assets/20260915_165430_image.png)
 
 #### DBeaver에서 접속
 
@@ -125,7 +130,7 @@ GUI DB관리 실행 툴
 
 #### PostgreSQL 기본구조
 
-![](assets/20260915_143339_image.png)
+![alt text](20260915_142829_image.png)
 
 - ai_db : 데이터베이스(프로젝트 전체 공간)
 - Schemas : 프로젝트 폴더
@@ -153,7 +158,7 @@ GUI DB관리 실행 툴
 
 - 데이터베이스 스키마를 사용할 데이터베이스로 **반드시** 선택
 
-![](assets/20260915_150520_image.png)
+![alt text](20260915_150514_image.png)
 
 - 아래의 코드를 작성
 
@@ -166,6 +171,8 @@ GUI DB관리 실행 툴
        creatated_at timestamp default current_timestamp -- 현재 작성된 일자
   );
   ```
+
+![alt text](20260915_150549_image.png)
 
 ##### 데이터 생성
 
@@ -288,7 +295,7 @@ values ('홍길순', 20, 'hong1@example.com'),
 - UPDATE 쿼리로 수정 - [소스]
 - UPDATE 쿼리 실행시 WHERE절 없이 실행 주의할 것!
 
-![alt text](image-10.png)
+![alt text](20260916_121442_image.png)
 
 ##### 데이터 삭제
 
@@ -346,7 +353,7 @@ created_at timestamp defalut current_timestamp -- NULL이 들어갈 수 있음
   values('애슐리', 26 , 'mina@example.com');
   ```
 
-![alt text](image-11.png)
+![alt text](20260916_145220_image.png)
 
 #### NULL 조회 쿼리
 
@@ -380,6 +387,8 @@ created_at timestamp defalut current_timestamp -- NULL이 들어갈 수 있음
   - 담당 강사
   - 수강 신청일
 
+  ![alt text](20260916_160815_image.png)
+
 *엑셀에서는 데이터를 제대로 관리하기 힘들다*
 
 ##### 좋은 테이블 설계
@@ -409,7 +418,7 @@ created_at timestamp defalut current_timestamp -- NULL이 들어갈 수 있음
 
 ##### 1. 기본키(PK)
 
->테이블에서 각 행(row)구분하는 대표값. Primay Key(PK)**Unique에 Not Null**
+> 테이블에서 각 행(row)구분하는 대표값. Primay Key(PK)**Unique에 Not Null**
 
 - 중복 불가!
 - 비어 있을 수 없다!
@@ -428,7 +437,7 @@ MySQL에서 auto_increment, Oracle 에서 identity로 문법이 다름.
 
 ##### 2. 외래키(FK)
 
->다른 테이블의 기본키를 참조하는 컬럼. Foreign Key(KF)
+> 다른 테이블의 기본키를 참조하는 컬럼. Foreign Key(KF)
 
 ```plantext
 Students(학생)
@@ -440,13 +449,99 @@ Enrollments(수강)
 - students_id : 학생아이디 FK
 - course_name : 수강명
 ```
-![alt text](<스크린샷 2026-09-16 172343.png>)
+
+![alt text](20260916_171157_image.png)
+
+```sql
+-- 수강 테이블 생성쿼리
+create table enrollments (
+	id int generated always as identity primary key,
+	students_id int not null, -- 수강하는 학생이 없으면 안됨
+	course_name varchar(100) not null,  -- 과목명 없으면 안됨
+	enrolled_at timestamp default current_timestamp,
+	constraint fk_enrollments_students
+		foreign key (students_id)
+		references students(id)
+);
+```
+
+![alt text](20260916_173253_image.png)
 
 ## 3일차
+
+### 추가 쿼리
+
+- 테이블 수정 쿼리 : 이미 만들어진 상태의 테이블을 수정하는 쿼리
+
+```sql
+alter table 
+alter column "email" type varchar(100;)
+```
+
+- 이외 제약조건 수정, 이름 수정, 불필요한 컬럼 삭제 등 수정 쿼리 작업
 
 ### 제약조건
 
 #### PK / FK 관계
-- 생략
 
-#### 
+- students 부모테이블 - enrollments 자식테이블
+
+#### NOT NULL 제약조건
+
+- 해당 컬럼은 반드시 값이 들어가야 함(바뀔 순 있음)
+
+```sql
+name varchar(50) not null 
+```
+
+- 아래의 쿼리는 오류가 발생함
+
+```sql
+--- 데이터 삽입
+insert into students (age, major)
+values (23, '경영학과');
+```
+
+students 테이블에 name은 not null 제약조건으로 반드시 입력해야하는데,
+현재 없기 때문에 오류
+
+- 이전에 생성된 컬럼을 NOT NULL 로 변경하는 쿼리
+
+```sql
+alter table public.students alter column email set not null;
+```
+
+오류화면
+
+- NOT NULL 로 변경불가 할때 생기는 오류 화면
+  (NOT NULL 체크시 NULL 값이 없어야함)
+- 이전 테이블에 새 컬럼 추가할때 NOT NULL로만은 생성불가. NULL로는 생성 가능
+
+#### UNIQUE 제약조건
+
+- 중복이 허용되지 않는 제약조건
+- 보통 이메일이 다른 사용자와 중복은 허용하지 않으나, 내 이메일은 다른 걸로 변경가능
+
+#### CHECK 제약조건
+
+- 값이 특정 조건을 만족해야만 저장되는 제약조건
+  - 초등학교 학년 : 1~6
+  - 대학교 학년 : 1~4
+  - 나이 : 0세 이상, 200세 이하
+  - 금액 : (최소판매금액) 1,000원이상
+
+- INT 타입은 -21억 ~ 21억까지 수를 저장. 모두 허용하면 학년에 음수나 0, 1~4 이상의 다른 수 입력 가능
+- 이를 방지해서 정확한 데이터만 입력
+
+
+학년컬럼 추가
+```sql
+alter table public.students ADD grade int NULL;
+```
+
+제약조건 추가
+```sql
+alter table public.students ADD CONSTRAINT ck_students_grade CHECK
+(grade > 0 and grade <=4);
+```
+
