@@ -176,8 +176,9 @@ GUI DB관리 실행 툴
 
 ##### 데이터 생성
 
-- insert(삽입)쿼리 / select(확인)쿼리> 난이도가 올라감 / update(수정)쿼리/ delete(삭제)쿼리  >>직접 입력해서 만든 거
-- ```sql
+- insert(삽입)쿼리/select(확인)쿼리/update(수정)쿼리/delete(삭제)쿼리  
+
+ ```sql
   -- 데이터 삽입(INSERT)
   insert into public.students (name, age, email)
   values ('홍길동', 20, 'honggd@example.com');
@@ -239,12 +240,12 @@ GUI DB관리 실행 툴
 
 학생 관리 프로그램을 만든다고 가정하면,
 
-- - 학생을 등록
+- 학생을 등록
   - 학생 목록 조회 / 특정 학생 내용 조회
   - 학생 정보 수정
   - 학생 정보 삭제
 
-  ##### 데이터 생성
+##### 데이터 생성
 - 항상 SELECT  쿼리로 확인하기
 - INSERT 쿼리로 데이터 추가
 
@@ -263,8 +264,6 @@ insert into students (name, age, email)
 values ('홍길순', 20, 'hong1@example.com'),
 ('홍길자', 50, 'hong2@example.com'),
 ('홍길매', 30, 'hong3@example.com');
-
-
 ```
 
 ##### 데이터 조회
@@ -328,7 +327,7 @@ created_at timestamp defalut current_timestamp -- NULL이 들어갈 수 있음
 ```
 
 - NULL 사용쿼리
-- ```sql
+ ```sql
   -- 데이터 추가
   insert into students (name, age, email, major)
   values('홍길동', 20, 'hong@example.com', '컴퓨터 공학');
@@ -544,4 +543,15 @@ alter table public.students ADD grade int NULL;
 alter table public.students ADD CONSTRAINT ck_students_grade CHECK
 (grade > 0 and grade <=4);
 ```
+#### DUFAULT 제약조건
+- 값을 입력하지 않으면 NULL이 아닌 자동으로 들어가는 기본 값
+(NOT NULL과는 사용하지 않음)
 
+```sql
+stock int default 0
+created_at timestamp default cureent_timestamp
+```
+- 수정쿼리
+```sql
+alter table public.products alter column category set default '미정'
+```
