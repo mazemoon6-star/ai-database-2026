@@ -501,6 +501,7 @@ name varchar(50) not null
 insert into students (age, major)
 values (23, '경영학과');
 ```
+
 ![alt text](20260917_102524_image.png)
 
 students 테이블에 name은 not null 제약조건으로 반드시 입력해야하는데,
@@ -575,11 +576,11 @@ alter table public.products alter column category set default '미정'
 관계형 DB에는 테이블간 관계에 몇 가지 관계성이 존재
 
 
-| 관계 | 설명 | 예시 |
-| ---- | ---- | ---- |
-|일대다|부모테이블 한 행이 자식 테이블 여러 행과 연결 |학생과 수강 신청 관계|
-|일대일|테이블 한 행이 자식 테이블 한 행과 연결 | 사용자와 사용자 상세정보  |
-|다대다|부모테이블 여러행이 자식 테이블 여러행과 연결 | 학생과 과목 |
+| 관계   | 설명                                          | 예시                     |
+| ------ | --------------------------------------------- | ------------------------ |
+| 일대다 | 부모테이블 한 행이 자식 테이블 여러 행과 연결 | 학생과 수강 신청 관계    |
+| 일대일 | 테이블 한 행이 자식 테이블 한 행과 연결       | 사용자와 사용자 상세정보 |
+| 다대다 | 부모테이블 여러행이 자식 테이블 여러행과 연결 | 학생과 과목              |
 
 - 다대다관계는 DB에서 구현 불가. 일대다 / 일대다 관계로 분리해서 구현
 
@@ -600,17 +601,108 @@ https://www.erdcloud.com/
 
 - ERD(Entity Relationship Da) 엔티티 관계 도식
 
-![alt text](<스크린샷 2026-09-17 143146.png>)
+![alt text](스크린샷 2026-09-17 143146.png)
 
-![alt text](<스크린샷 2026-09-17 150852.png>)
+![alt text](스크린샷 2026-09-17 150852.png)
 
 - 학생 과목 수강관리 테이블 ERD
 
+##4일차
 
 ### JOIN
->관계형 데이터베이스에서 여러개로 나눈 테이블의 정보를 하나로 합쳐서 조회하는 것
+
+> 관계형 데이터베이스에서 여러개로 나눈 테이블의 정보를 하나로 합쳐서 조회하는 것
+
+#### JOIN 필요 이유
+
+관계형 DB는 데이터를 하나의 통 테이블에 넣지 않고, 주제에 따라서 여러 테이블에 나누어 저장함
+
+- 학생, 과목, 수강 테이블에서
+- 수강신청 정보 - 학생테이블과 과목테이블을 수강테이블의 구분키로 연결해서 조회
+
+#### INNER JOIN
+
+- 조건이 서로 일치하는 데이터만 조회
+- 테이블 관계 확인하고 관련있는 PK와 FK로 조인할 것!
+- 같은 의미를 가진 컬럼들이 존재하므로 select * 보다는 select 컬럼을 나열하는게 보기좋음
+- 같은 단어를 가진 컬럼명은 "별명"으로 변경할 것
+
+```sql
+-- JOIN
+select  s.id "학생번호", s.name "학생이름", s.email "학생이메일", s.major "전공",
+        e.id "수강번호", e.enrolled_at "수강일자" ,
+        c.id "과목번호", c.title "과목명", c.instructor "교강사명", c.hours "총시간"
+  from students s
+ inner join enrollments e 
+ on s.id = e.student_id
+ inner join courses c 
+ on c.id = e.course_id ;
+```
+
+#### JOIN 후 조건으로 조회
+
+- 학생번호로 조회, 특정전공으로 조회 등...
+- where 절 사용
+
+#### 정렬
+
+- ORDER BY ASC/DESC
+
+#### OUTER JOIN
+
+- 조건이 일치하지 않아도 조회
+- 기준이 LEFT, RIGHT 두가지 존재
+- LEFT OUTER JOIN 왼쪽 테이블 기준으로 오른쪽 테이블에 연결되지 않은 데이터도 나오도록 조회
+- RIGHT OUTER JOIN - LEFT OUTER JOIN의 반대
+
+### 집계함수
+
+- 통계를 위해서 합산, 평균, 최소/최대 등 집계함수를 사용하여 계산하는 쿼리
+- count(*), sum(칼럼), avg(칼럼), min(컬럼), max(컬럼) - 숫자로 된 컬럼
+- group by 사용시는 select * 사용불가. 필요 컬럼과 집계함수 반드시 사용
 
 ### 트랜잭션
-- 커밋, 롤백
 
-### 
+- 여러 SQL 작업을 하나의 단위로 묶는 기능, 모든 작업이 성공하면 COMMIT, 오류가 발생하면 *ROLLBACK* 하는 개념
+- ACID
+  - A 원자성 : 작업 전체가 반영되거나 전체가 취소된다
+  - C 일관성 : 트랜잭션 전후에 데이터 규칙이 유지된다
+  - I 고립성 : 트랜잭션 동안은 밀폐되어야 한다
+  - D 지속성 : COMMIT된 데이터는 장애가 발생해도 보존된다
+
+#### 트랜잭션 필요 키워드 명령어
+
+- 트랜잭션 시작
+
+```sql
+begin;
+begin transaction;
+```
+
+- 확정
+
+```sql
+commit;
+```
+
+-취소/복귀/롤백
+
+```sql
+rollback;
+```
+
+#### 트랜잭션 설정
+
+- PostgreSQL 기본 트랜잭션
+- DBeaver 에서 트랜잭션 설정을 변경
+- 메뉴 - 데이터베이스 > 트랜잰셕 모드 > Manual commit 으로 변경 후 작업
+  (auto commit 상태에서는 rollback이 안됨)
+
+#### 트랜잭션 실습
+
+- Auto Commit 상태에서 테이블 생성
+- Manual Commit 으로 변경
+- `begin` (DBeaver에서 자동으로 트랜잭션 시작), `commit`, `rollbak`
+
+
+[다음](./README2.md)
