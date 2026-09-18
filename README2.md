@@ -70,3 +70,6 @@ uvicorn main:app --reload --port 8000
 - `--port` : 서버를 시작할 포트 지정
 - http://127.0.0.1:8000 메세지 확인
     - 127.0.0.1 -> localhost 
+
+![alt text](image-5.png)
+실행결과
