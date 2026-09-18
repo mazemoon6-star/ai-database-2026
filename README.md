@@ -607,7 +607,7 @@ https://www.erdcloud.com/
 
 - 학생 과목 수강관리 테이블 ERD
 
-##4일차
+## 4일차
 
 ### JOIN
 
