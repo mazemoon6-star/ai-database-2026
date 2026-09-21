@@ -30,7 +30,7 @@
 
 > 클라이언트 요청을 받아 필요한 작업을 수행. 그 결과를 클라이언트에게 돌려주는 프로그램
 
-##개발환경 설정
+## 개발환경 설정
 
 ### FastAPI 패키지 설치
 
@@ -91,6 +91,9 @@ uvicorn main:app --reload --port 8000
 
 - FastAPI에서 자동으로 제공하는 API 테스트 페이지
 - http(s)://adress:port/docs  (docs는 데이터 수정.삭제.조회해주는 Tool)
+
+![alt text](20260921_101521_image.png)
+
 - api의 결과는 json타입 (문자열을 일반적으로 ""로 표현) 파이썬 딕셔너리는 ''로 표현한것과 차이
 
 #### URL 경로
@@ -118,6 +121,8 @@ FastAPI는 주소와 HTTP 메서드도 파악필요
 
 - GET 메서드 외(POST,PATCH,PUT,DELETE)에는 swagger UI에서 테스트 해야 함(웹URL에서는 GET메서드만 가능)
 
+![alt text](20260921_112812_image.png)
+
 #### 요청본문
 
 - POST 나 PATCH 요청시 클라이언트가 JSON으로 데이터를 서버에 전달해야 함. 그 데이터를 등록 또는 수정.
@@ -137,7 +142,12 @@ FastAPI는 주소와 HTTP 메서드도 파악필요
 
   - Try it out 클릭
   - Request body 입력 후 Excute 실행
+
+![alt text](20260921_135822_image.png)
+
 - 실행결과
+
+![alt text](20260921_142035_image.png)
 
 ##### HTTPException
 
