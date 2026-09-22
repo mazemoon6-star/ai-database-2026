@@ -211,6 +211,7 @@ pip install -r requirments.txt # 전달받은 파일 개발환경 재설치명�
 ##### main.py
 - database.py를 호출해서 실제 DB연결과 FastAPI 작업 병행
 
+![alt text](20260922_145514_image.png)
 
 ### 디버깅
 
